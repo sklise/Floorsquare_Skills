@@ -114,20 +114,26 @@ input:focus {outline: none;}
 #content #checkedinList ul {
     list-style: none;
     margin-left: -10px;
+    float: none;
+    clear: both;
 }
 #content #checkedinList ul li {
     margin-right: 33px;
     margin-bottom: 33px;
+    float: none;
+    clear: both;
 }
 #content #checkedinList ul li p {
     padding: 2px 6px 3px;
     font-size: 10px;
     margin-top: 2px;
-    text-align: center;
+    text-align: left;
 	background-color: #F9EE56;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
+	float: none;
+    clear: both;
 }
 #content #checkin a {
     margin-left: 20px;

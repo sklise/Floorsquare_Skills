@@ -4,24 +4,40 @@ var sideDetail = false;
     
     $('#checkedinList').isotope({
       itemSelector : '.studentBox',
-      layoutMode : 'cellsByRow',
+      layoutMode : 'masonry',
       rowHeight: 100
     });
     
     $("#searcher").live('focus', function() {
-        $(this).val("");
+        if ($(this).val()=="search"){
+            $(this).val("");
+        }
         $(this).css({'background-color' : '#ddd'});
         return false;
     });
     $("#searcher").live('blur', function() {
         $(this).css({'background-color' : '#888'});
         return false;
+    });  
+      
+    $('#checkedinList').isotope({
+      getSortData : {
+        skill : function ( $elem ) {
+          return $elem.find('.skill').text();
+        },
+        name : function ( $elem ) {
+          return $elem.find('.nameDisplay').text();
+        }
+      }
     });
+    
     $("#searcher").keypress(function(e){
       if(e.which == 13){
-        q = $('#searcher').val();
-         dosearch(q);
         e.preventDefault();
+        q = $('#searcher').val();
+        $('#checkedinList').isotope({ sortBy : 'skill' });
+        //$('#checkedinList').isotope({ filter: '.'+q });
+        console.log("q = "+q);
         return false;
        }
     });
