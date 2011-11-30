@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:9292/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Floorsquare Lite</title>
+	<link rel="stylesheet" href="http://localhost:9292/stylesheets/style.css">
+	<script src="./Floorsquare_files/jquery.min.js"></script>
+	<script src="./Floorsquare_files/application.js"></script>
+</head>
+<body>
+	<h1>Floorsquare LITE</h1>
+<br>
+<br>
+<br>
+
+
+<form method="POST" action="http://localhost:9292/swipe/new">
+<input type="text" name="nnumber" />
+<input type="hidden" name="app_id" value="1" />
+
+<input type="submit" value="Go" />
+</form>
+
+<br><br>
+
+<p id="newswipe">New Swipe</p>
+<br>
+<p id="putswipe">Put Swipe</p>
+<br>
+<p id="putuser">Put User Skills</p>
+<br>
+<p id="getswipes">Get Swipes that are: checkin:true;</p>
+<br>
+
+
+
+<script>
+
+
+
+
+var swipeid;
+// var url = "http://localhost:9292"
+// var url = "http://127.0.0.1:9292"
+var url = ""
+// var url = "http://www.itpirl.com"
+
+$(function() {
+
+var swipe_data ={ nnumber: "123", app_id: '1', device_id: '1', extra: {checkin: true, }};
+
+
+
+	// $("p#newswipe").click(function(){ 
+	// 	$.post("http://localhost:9292/swipe/new", { nnumber: "123", app_id: '1', device_id: '1', extra: {checkin: true, }},
+	// 	function(data){
+	// 		odata = jQuery.parseJSON(data);
+	// 		console.log(odata);
+	// 		swipeid= odata.swipeid;
+	// 	} );
+	// });
+
+	$("p#newswipe").click(function(){ 
+		$.ajax({
+			url: url+"/swipe/new",
+			data: { nnumber: "123", app_id: '1', device_id: '1', app_key: "db30ad56947d8521acd0870e765a553077bd6b17",  extra: {checkin: true, }},
+			type: 'POST',
+			crossDomain: true,
+			success: function(data){
+				odata = jQuery.parseJSON(data);
+				console.log(odata);
+				swipeid= odata.swipeid;
+			} 
+		});
+	});
+
+
+
+
+
+	$("p#putswipe").click(function(){ 
+		$.ajax({
+		  url: url+"/swipe/"+swipeid,
+		  context: document.body,
+		  type: 'POST',
+		  crossDomain: true,
+
+		  data: { nnumber: "123", app_id: '1', device_id: '1', extra: {available: 'true'}},
+		  success: function(){
+		    $(this).addClass("done");
+		  }
+		});
+	});
+
+
+	$("p#putuser").click(function(){ 
+		$.ajax({
+		  url: url+"/user/"+"123",
+		  context: document.body,
+		  type: 'POST',
+  		  crossDomain: true,
+
+		  data: { nnumber: "123", app_id: '1', device_id: '1', extra: {skills: 'icm, pizza, coolness'}},
+		  success: function(){
+		    $(this).addClass("done");
+		  }
+		});
+	});
+
+	$("p#getswipes").click(function(){ 
+		console.log('gggetting json');
+
+		$.getJSON("/swipes/", { app_id: '1', app_key: "db30ad56947d8521acd0870e765a553077bd6b17" , device_id: '1', extra: {checkin: true, available: true}},
+		function(data){
+			console.log(data);
+
+		} );
+
+	});	
+
+
+
+
+
+
+});  //end docready
+
+</script>
+
+</body></html>

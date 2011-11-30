@@ -1,7 +1,14 @@
 var sideDetail = false;
 
  $(document).ready(function(){
-    
+    var studentImages = $(".studentBox img");
+    $(studentImages).each(function(index) {
+        if ($(this).hasClass('unavail')) {
+            console.log("un");
+            $(this).parent('li').css({'background-color' : 'rgba(0,0,0,0.8)', 'opacity' : '0.5', 'color' : '#aaa'});
+        }
+     });
+
     $('#checkedinList').isotope({
       itemSelector : '.studentBox',
       layoutMode : 'masonry',
@@ -12,43 +19,47 @@ var sideDetail = false;
         if ($(this).val()=="search"){
             $(this).val("");
         }
-        $(this).css({'background-color' : '#ddd'});
+        $(this).css({'background-color' : 'rgb(245,245,187)'});
         return false;
     });
     $("#searcher").live('blur', function() {
-        $(this).css({'background-color' : '#888'});
+        $(this).css({'background-color' : '#FFF'});
         return false;
     });  
       
-    $('#checkedinList').isotope({
+    $('#content').isotope({
       getSortData : {
         skill : function ( $elem ) {
+            console.log($elem.find('.skill').text());
           return $elem.find('.skill').text();
         },
         name : function ( $elem ) {
+            console.log($elem.find('.nameDisplay').text());
           return $elem.find('.nameDisplay').text();
         }
       }
-    });
+    })
     
     $("#searcher").keypress(function(e){
       if(e.which == 13){
         e.preventDefault();
         q = $('#searcher').val();
-        $('#checkedinList').isotope({ sortBy : 'skill' });
+        $('#checkedinList').isotope({ sortBy : q });
         //$('#checkedinList').isotope({ filter: '.'+q });
         console.log("q = "+q);
         return false;
        }
     });
     
+/*
     $(".searchButton").click(function(e){
         q = $('#searcher').val();
         dosearch(q);
         e.preventDefault();
         return false;
     });
-    
+*/
+
     var dosearch = function(q) {
     $('#searcher').addClass('searchLoading');
     $.ajax({
@@ -67,13 +78,5 @@ var sideDetail = false;
                 }
             }
         });
-    }
- 
- 
-    var  rightShift = (-($(document).width())/2)-60;
-    $('#cirlceCanvas1').css("margin-left", rightShift);
-     $(window).resize(function() {
-        var rightSh = (-($(document).width())/2)-60;
-        $('#cirlceCanvas1').css("margin-left", rightSh);
-    });
+    }    
 });
