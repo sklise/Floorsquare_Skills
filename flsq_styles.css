@@ -6,6 +6,9 @@
 	font-family: Quicksand;
 	src: url('Quicksand_Bold.otf');
 }
+.mainpage{opacity: 0;}
+.formpage{display: none; opacity: 0;}
+.checkinpage{}
 body {
     font-family: Quicksand, 'sans serif';
     margin: 0px;
@@ -70,8 +73,8 @@ input:focus {outline: none;}
     padding: 0px 10px;
     font-size: 14px;
     font-weight: 100;
-    color: #AAA;
-    background-color: #FFF;/* rgb(255,255,197); */
+    color: #333;
+    background-color: rgb(245,245,187);/* rgb(187,217,118);  */
     border-top: #222 solid 2px;
     border-right: #222 solid 0px;
     border-bottom: #222 solid 2px;
@@ -145,12 +148,18 @@ background-image: -moz-linear-gradient(100% 100% 90deg, #222, #444 );
     background-color: none;
     border: none;
 }
-#content {
-    margin-top: 40px;
+.content {
+    margin-top: 26px;
+    padding: 30px;
+    /* background-color: #fff; */
+}
+.content #greeting {
     padding: 30px;
     background-color: #fff;
+    margin-bottom: 20px;
+    width: 100%;
 }
-#content h1 {
+.content h1 {
     color: #222;
 /*
     padding: 6px 12px 2px; 
@@ -177,7 +186,7 @@ background-image: -moz-linear-gradient(100% 100% 90deg, #222, #444 );
     float: none;
     clear: both;
     padding: 6px 8px 10px;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255,255,255,0.65);
 /*     border: 1px solid rgba(255,255,255,0.7); */
 }
 /*
@@ -199,18 +208,22 @@ background-image: -moz-linear-gradient(100% 100% 90deg, #222, #444 );
 	float: none;
     clear: both;
 }
-#content #checkin a {
+.content #checkin a {
     clear: both;
 }
-#content #checkin ul {
+.content #checkin h2 {
+    padding-left: 30px;
+    color: #fff;
+}
+.content #checkin ul {
     list-style: none;
 }
-#content #checkin ul li {
+.content #checkin ul li {
     float: left;
     margin-right: 33px;
     margin-bottom: 33px;
 }
-#content #checkin ul li p {
+.content #checkin ul li p {
     padding: 2px 6px 3px;
     float: right;
     font-size: 10px;
@@ -222,6 +235,9 @@ background-image: -moz-linear-gradient(100% 100% 90deg, #222, #444 );
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
 }
+#accountForm {
+    overflow: visible;
+}
 #accountForm, #checkin {
     min-height: 260px;
 }
@@ -231,7 +247,7 @@ background-image: -moz-linear-gradient(100% 100% 90deg, #222, #444 );
     margin-top: 10px;
 }
 #accountForm #skillfield_tagsinput {
-    margin-bottom: 22px;
+    margin-bottom: 10px;
 }
 #accountForm .personImg {
     float: left;
@@ -275,22 +291,27 @@ background-image: -moz-linear-gradient(100% 100% 90deg, #222, #444 );
     cursor: pointer;
 }
 
-#content #checkin .tagsinput {
-    margin-bottom: 80px;
+.content #checkin .tagsinput {
+    margin-bottom: 20px;
     border: none;
 }
-#content #accountForm .link:hover,
-#content #checkin .link:hover {
+.content .link:hover,
+.content #checkin .link:hover {
     background-color: rgb(162,218,219);
 }
-#content #accountForm .link,
-#content #checkin .link {
+.content #accountForm .link {
+    margin-top: 400px
+}
+.content .link,
+.content #checkin .link {
     padding: 5px 16px;
-    margin-right: 20px;
+    margin-right: 13px;
+    margin-left: 13px;
     margin-top: 800px;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     color: #fff;
+    text-shadow: 1px 1px 1px  rgb(84,176,176);
     background-color: rgb(114,196,196);
     border-top: #888 solid 1px;
     border-right: #444 solid 1px;

@@ -1,11 +1,25 @@
 var sideDetail = false;
 
  $(document).ready(function(){
+    
+    $('.updater').click(function(){
+        $('.checkinpage').animate({opacity: "0"},200,'swing',function() {
+            $('.formpage').show();
+            $('.formpage').animate({opacity: "1"},250,'swing',function() {});
+         });
+    });
+    
+    $('.gotoMain').click(function(){
+        $('.formpage').animate({opacity: "0"},200,'swing',function() {
+            $('.mainpage').show();
+            $('.mainpage').animate({opacity: "1"},250,'swing',function() {});
+         });
+    });
+ 
     var studentImages = $(".studentBox img");
     $(studentImages).each(function(index) {
         if ($(this).hasClass('unavail')) {
-            console.log("un");
-            $(this).parent('li').css({'background-color' : 'rgba(0,0,0,0.8)', 'opacity' : '0.5', 'color' : '#aaa'});
+            $(this).parent('li').css({'background-color' : 'rgba(20,20,20,0.8)', 'opacity' : '0.5', 'color' : '#aaa'});
         }
      });
 
@@ -15,15 +29,17 @@ var sideDetail = false;
       rowHeight: 100
     });
     
+    $('.mainpage').hide();
+    
     $("#searcher").live('focus', function() {
         if ($(this).val()=="search"){
             $(this).val("");
         }
-        $(this).css({'background-color' : 'rgb(245,245,187)'});
+        $(this).css({'background-color' : '#fff'});
         return false;
     });
     $("#searcher").live('blur', function() {
-        $(this).css({'background-color' : '#FFF'});
+        $(this).css({'background-color' : 'rgb(245,245,187)'});
         return false;
     });  
       
@@ -47,6 +63,7 @@ var sideDetail = false;
         $('#checkedinList').isotope({ sortBy : q });
         //$('#checkedinList').isotope({ filter: '.'+q });
         console.log("q = "+q);
+        $(this).css({'background-color' : 'rgb(245,245,187)'});
         return false;
        }
     });
@@ -80,3 +97,45 @@ var sideDetail = false;
         });
     }    
 });
+
+
+/* ///////////////// CHECKIN SCRIPTS /////////////////*/
+$(document).ready(function(){
+    var url = "http://www.itpirl.com";
+    $('#skillshow').tagsInput({
+		width: 'auto',
+		height:' 40px',
+		interactive: false,
+	});
+	$('a').each(function(index) {
+	   if($(this).text() == "x"){
+	       $(this).hide();
+	   }
+	});
+	
+    	$(".avail").click(function(){ 
+    		$.ajax({
+    			url: url+"/swipes/new",
+    			data: { user_nnumber: "123", app_id: '1', device_id: '1', app_key: "db30ad56947d8521acd0870e765a553077bd6b17",  extra: {checkin: true, }},
+    			type: 'POST',
+    			crossDomain: true,
+    			success: function(data){
+    				odata = jQuery.parseJSON(data);
+    				console.log(odata);
+/*                 				swipeid= odata.swipeid; */
+    			} 
+    		});
+    		console.log("post");
+    	});
+    	
+    	$(".getStuff").click(function(){ 
+    		console.log('gggetting json');
+    		$.getJSON(url+"/swipes", { app_id: '1', app_key: "db30ad56947d8521acd0870e765a553077bd6b17" , device_id: '1', extra: {checkin: true, available: false}},
+    		function(data){
+    			console.log(data);
+    		});
+    		return false;
+    	});	
+	 
+});
+

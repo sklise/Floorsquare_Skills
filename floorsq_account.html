@@ -11,27 +11,14 @@
         <script type="text/javascript">  
            $(document).ready(function(){
                 $('#skillfield').tagsInput({
-            		width: 'auto',
+            		width: '780',
             		height:' 40px',
-/*
-            		onAddTag: function(elem, elem_tags)
-            		{
-            			var languages = ['php','ruby','javascript'];
-            			$('.tag', elem_tags).each(function()
-            			{
-            				if($(this).text().search(new RegExp('\\b(' + languages.join('|') + ')\\b')) >= 0)
-            					$(this).css('background-color', 'yellow');
-            			});
-            		}
-*/
             	});
-                //$("#skillfield_tagsinput").keypress(function(e){
                 $(".searchButton").click(function(){
                     var skillUpdate = {};
                     	$('#skillfield_tagsinput .tag span').each(function(index) {
                     	       var trimIt = $.trim($(this).text());
                     	       skillUpdate += trimIt+",";
-                            //console.log($(this).text());
                         });
                         skillUpdate.slice(0, - 1);
                         console.log(skillUpdate);
@@ -52,18 +39,21 @@
                 </div>
     	   </div> <!-- END header div -->
     	   
-    	   <div id="content">
-    	       <div id="accountForm">
-    	          <form>
-    	          <img class="personImg" src="http://itp.nyu.edu/image.php?width=100&height=100&cropratio=1:1&image=/people_pics/flash/crowley_d_19751.jpg" alt="student" width="100" height="100"/>
-                      <p for="namer"><span>Your Name</span><br/>Dennis Crowley</p>
-                      <p for="namer"><span>Your NetId</span><br/>dc3412</p>                 
-                      <p class="skillLabel"><span>Skills:</span> press "enter" after each skill. Please choose only your best expertise.</p>
-                      <input name="skills" id="skillfield" value="ruby,javascript,geolocation,telephony"/><br/>
-                      <a href="floorsq.html" class="link">Update Account</a>
-                </form>
+    	   <div id="content" class="formpage">
+        	   <div id="accountForm">
+        	   <div id="greeting">
+        	          <form>
+        	               <img class="personImg" src="http://itp.nyu.edu/image.php?width=100&height=100&cropratio=1:1&image=/people_pics/flash/crowley_d_19751.jpg" alt="student" width="100" height="100"/>
+                          <p for="namer"><span>Your Name</span><br/>Dennis Crowley</p>
+                          <p for="namer"><span>Your NetId</span><br/>dc3412</p>                 
+                          <p class="skillLabel"><span>Skills:</span> press "enter" after each skill. Please choose only your best expertise.</p>
+                          <input name="skills" id="skillfield" value="ruby,javascript,geolocation,telephony"/><br/>
+                    </form>
+                    <a href="floorsq.html" class="link">Update Account</a>
+                    </div>
+                    
     	       </div>
-    	   </div><!-- END content div -->
+    	   </div><!-- END content formpage div -->
     	   
     	   <div id="footer">
     	   

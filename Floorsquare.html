@@ -50,14 +50,14 @@ var swipe_data ={ nnumber: "123", app_id: '1', device_id: '1', extra: {checkin: 
 
 
 
-	// $("p#newswipe").click(function(){ 
-	// 	$.post("http://localhost:9292/swipe/new", { nnumber: "123", app_id: '1', device_id: '1', extra: {checkin: true, }},
-	// 	function(data){
-	// 		odata = jQuery.parseJSON(data);
-	// 		console.log(odata);
-	// 		swipeid= odata.swipeid;
-	// 	} );
-	// });
+	 $("p#newswipe").click(function(){ 
+	 	$.post("http://itpirl/swipe/new", { nnumber: "123", app_id: '1', device_id: '1', extra: {checkin: true, }},
+	 	function(data){
+	 		odata = jQuery.parseJSON(data);
+	 		console.log(odata);
+	 		swipeid= odata.swipeid;
+	 	} );
+	 });
 
 	$("p#newswipe").click(function(){ 
 		$.ajax({
@@ -108,13 +108,10 @@ var swipe_data ={ nnumber: "123", app_id: '1', device_id: '1', extra: {checkin: 
 
 	$("p#getswipes").click(function(){ 
 		console.log('gggetting json');
-
 		$.getJSON("/swipes/", { app_id: '1', app_key: "db30ad56947d8521acd0870e765a553077bd6b17" , device_id: '1', extra: {checkin: true, available: true}},
 		function(data){
 			console.log(data);
-
-		} );
-
+		});
 	});	
 
 
