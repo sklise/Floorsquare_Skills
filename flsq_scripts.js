@@ -116,12 +116,12 @@ $(document).ready(function(){
     	$(".avail").click(function(){ 
     		$.ajax({
     			url: url+"/swipes/new",
-    			data: { user_nnumber: "123", app_id: '1', device_id: '1', app_key: "db30ad56947d8521acd0870e765a553077bd6b17",  extra: {checkin: true, }},
+    			data: { user_nnumber: "123", app_id: '1', device_id: '1', app_key: "82ac7bdb2e8ef44b5a2124f43ee05479",  extra: {checkin: true, }},
     			type: 'POST',
     			crossDomain: true,
     			success: function(data){
-    				odata = jQuery.parseJSON(data);
-    				console.log(odata);
+/*     				odata = jQuery.parseJSON(data); */
+    				console.log(data);
 /*                 				swipeid= odata.swipeid; */
     			} 
     		});
